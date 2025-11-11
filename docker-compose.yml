@@ -1,0 +1,16 @@
+services:
+  llm-verktoy-api:
+    build:
+      context: ./llm-verktoy-api
+    container_name: llm-verktoy-api
+    ports:
+      - "4000:4000"
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+    volumes:
+      - ./konsulent-api/server.py:/mcp-server/server.py:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:4000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
