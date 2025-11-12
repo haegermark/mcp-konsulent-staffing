@@ -101,10 +101,10 @@ curl "http://localhost:4000/tilgjengelige-konsulenter/sammendrag?min_tilgjengeli
 
 ```bash
 # Start
-docker compose up -d
+docker compose up
 
 # Rebuild
-docker compose up --build -d
+docker compose up --build
 
 # Stopp
 docker compose down
